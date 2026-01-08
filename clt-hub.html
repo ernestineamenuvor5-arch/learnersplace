@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career-Linked Learning Hub | Ghana JHS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a5f3f;
+            --primary-light: #2d8659;
+            --accent: #f4a623;
+            --accent-dark: #d98f1c;
+            --text-dark: #1a2332;
+            --text-body: #3d4f5e;
+            --bg-cream: #faf8f4;
+            --bg-white: #ffffff;
+            --border: #e0dcd3;
+            --shadow-sm: 0 2px 8px rgba(26, 95, 63, 0.08);
+            --shadow-md: 0 4px 16px rgba(26, 95, 63, 0.12);
+            --shadow-lg: 0 8px 32px rgba(26, 95, 63, 0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, #ffffff 100%);
+            color: var(--text-body);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-white);
+            border-bottom: 3px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            font-weight: 900;
+            box-shadow: var(--shadow-md);
+        }
+
+        .logo-text h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: var(--text-body);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            animation: fadeIn 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(120deg, var(--accent) 0%, var(--accent-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-body);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: var(--bg-white);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--border);
+            animation: fadeIn 0.8s ease 0.4s both;
+        }
+
+        .search-label {
+            font-family: 'Fraunces', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 18px 24px;
+            font-size: 18px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(26, 95, 63, 0.1);
+        }
+
+        .search-btn {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-md);
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .search-btn:active {
+            transform: translateY(0);
+        }
+
+        .popular-careers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .career-tag {
+            padding: 10px 20px;
+            background: var(--bg-cream);
+            border: 2px solid var(--border);
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .career-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .results-header h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .career-display {
+            display: inline-block;
+            background: linear-gradient(120deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .results-description {
+            font-size: 18px;
+            color: var(--text-body);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Subject Cards */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .subject-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .subject-card:nth-child(1) { animation-delay: 0.1s; }
+        .subject-card:nth-child(2) { animation-delay: 0.2s; }
+        .subject-card:nth-child(3) { animation-delay: 0.3s; }
+        .subject-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subject-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .subject-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .subject-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .subject-title {
+            font-family: 'Fraunces', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .topics-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .topic-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-body);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .topic-item:last-child {
+            border-bottom: none;
+        }
+
+        .topic-item:hover {
+            color: var(--primary);
+            padding-left: 8px;
+        }
+
+        .week-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 48px 0 32px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .search-section {
+                padding: 32px 24px;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: var(--text-body);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 24px;
+            background: var(--bg-white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .no-results h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .no-results p {
+            font-size: 18px;
+            color: var(--text-body);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🎓</div>
+                    <div class="logo-text">
+                        <h1>CLT Hub</h1>
+                        <p>Career-Linked Learning</p>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Discover Your <span class="hero-highlight">Future Career</span><br>Through Learning</h2>
+                <p>Explore Ghana's JHS curriculum tailored to your career interests. Find the subjects and topics that will help you achieve your dreams.</p>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <label class="search-label">What career interests you?</label>
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="careerInput" 
+                    placeholder="e.g., Engineer, Doctor, Businessperson, Teacher..."
+                    autocomplete="off"
+                >
+                <button class="search-btn" onclick="searchCareer()">Search</button>
+            </div>
+            <div class="popular-careers">
+                <span style="font-size: 14px; color: var(--text-body); margin-right: 8px;">Popular:</span>
+                <div class="career-tag" onclick="selectCareer('Engineering')">Engineering</div>
+                <div class="career-tag" onclick="selectCareer('Business')">Business</div>
+                <div class="career-tag" onclick="selectCareer('Healthcare')">Healthcare</div>
+                <div class="career-tag" onclick="selectCareer('Technology')">Technology</div>
+                <div class="career-tag" onclick="selectCareer('Teaching')">Teaching</div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="results-section" id="resultsSection">
+                <div class="results-header">
+                    <div class="career-display" id="careerDisplay"></div>
+                    <h3>Your Learning Path</h3>
+                    <p class="results-description">Here are the subjects and topics from the Ghana JHS curriculum that align with your career interest. Each topic is linked to real-world skills you'll need.</p>
+                </div>
+
+                <div class="subjects-grid" id="subjectsGrid">
+                    <!-- Results will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p><strong>Career-Linked Learning Hub</strong></p>
+                <p>Empowering Ghana's Youth Through Career-Focused Education</p>
+                <p>&copy; 2026 CLT Hub. Built for JHS Students.</p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Use</a>
+                    <a href="#support">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Career-linked curriculum data
+        const curriculumData = {
+            'Engineering': {
+                subjects: [
+                    {
+                        name: 'Mathematics',
+                        icon: '📐',
+                        topics: [
+                            { name: 'Basic Operations in Business', week: 'Week 3' },
+                            { name: 'Geometry and Spatial Reasoning', week: 'Week 5' },
+                            { name: 'Measurements and Calculations', week: 'Week 7' },
+                            { name: 'Problem-Solving with Numbers', week: 'Week 9' }
+                        ]
+                    },
+                    {
+                        name: 'Science',
+                        icon: '🔬',
+                        topics: [
+                            { name: 'Forces and Motion', week: 'Week 2' },
+                            { name: 'Energy and Power', week: 'Week 4' },
+                            { name: 'Materials and Structures', week: 'Week 6' },
+                            { name: 'Simple Machines', week: 'Week 8' }
+                        ]
+                    },
+                    {
+                        name: 'Design & Technology',
+                        icon: '⚙️',
+                        topics: [
+                            { name: 'What is Engineering?', week: 'Week 1' },
+                            { name: 'Types of Engineers', week: 'Week 2' },
+                            { name: 'Engineering Around Us', week: 'Week 3' },
+                            { name: 'Problem-Solving Like an Engineer', week: 'Week 4' },
+                            { name: 'Career Spotlight & Review', week: 'Week 5' }
+                        ]
+                    },
+                    {
+                        name: 'ICT',
+                        icon: '💻',
+                        topics: [
+                            { name: 'Computer-Aided Design Basics', week: 'Week 3' },
+                            { name: 'Digital Tools for Engineers', week: 'Week 6' },
+                            { name: 'Data and Engineering', week: 'Week 8' }
+                        ]
+                    }
+                ]
+            },
+            'Business': {
+                subjects: [
+                    {
+                        name: 'Social Studies',
+                        icon: '🌍',
+                        topics: [
+                            { name: 'Understanding Needs, Wants & Trade', week: 'Week 1' },
+                            { name: 'Money: Forms, Value & Uses', week: 'Week 2' },
+                            { name: 'Goods and Services', week: 'Week 4' },
+                            { name: 'Introduction to Buying & Selling', week: 'Week 5' },
+                            { name: 'Communication in Business', week: 'Week 7' }
+                        ]
+                    },
+                    {
+                        name: 'Mathematics',
+                        icon: '📊',
+                        topics: [
+                            { name: 'Basic Business Maths', week: 'Week 3' },
+                            { name: 'Data in Business', week: 'Week 6' },
+                            { name: 'Profit and Loss Calculations', week: 'Week 8' },
+                            { name: 'Business Project Planning', week: 'Week 10' }
+                        ]
+                    },
+                    {
+                        name: 'ICT',
+                        icon: '💼',
+                        topics: [
+                            { name: 'Digital Tools for Business', week: 'Week 7' },
+                            { name: 'Product Design & Branding', week: 'Week 8' },
+                            { name: 'Marketing Basics', week: 'Week 9' },
+                            { name: 'Mini Business Presentation', week: 'Week 10' }
+                        ]
+                    }
+                ]
+            },
+            'Healthcare': {
+                subjects: [
+                    {
+                        name: 'Science',
+                        icon: '🧬',
+                        topics: [
+                            { name: 'Human Body Systems', week: 'Week 1' },
+                            { name: 'Health and Hygiene', week: 'Week 3' },
+                            { name: 'Disease Prevention', week: 'Week 5' },
+                            { name: 'Nutrition and Wellness', week: 'Week 7' }
+                        ]
+                    },
+                    {
+                        name: 'Home Economics',
+                        icon: '🏥',
+                        topics: [
+                            { name: 'Food and Nutrition', week: 'Week 2' },
+                            { name: 'First Aid Basics', week: 'Week 4' },
+                            { name: 'Health and Safety', week: 'Week 6' },
+                            { name: 'Community Health', week: 'Week 8' }
+                        ]
+                    },
+                    {
+                        name: 'Social Studies',
+                        icon: '👥',
+                        topics: [
+                            { name: 'Healthcare Systems in Ghana', week: 'Week 9' },
+                            { name: 'Public Health Awareness', week: 'Week 10' }
+                        ]
+                    }
+                ]
+            },
+            'Technology': {
+                subjects: [
+                    {
+                        name: 'ICT',
+                        icon: '💻',
+                        topics: [
+                            { name: 'Introduction to Computers', week: 'Week 1' },
+                            { name: 'Software and Applications', week: 'Week 3' },
+                            { name: 'Internet and Digital Citizenship', week: 'Week 5' },
+                            { name: 'Basic Programming Concepts', week: 'Week 7' },
+                            { name: 'Digital Content Creation', week: 'Week 9' }
+                        ]
+                    },
+                    {
+                        name: 'Mathematics',
+                        icon: '🔢',
+                        topics: [
+                            { name: 'Logic and Problem Solving', week: 'Week 2' },
+                            { name: 'Patterns and Sequences', week: 'Week 4' },
+                            { name: 'Data Analysis', week: 'Week 6' }
+                        ]
+                    },
+                    {
+                        name: 'Design & Technology',
+                        icon: '🛠️',
+                        topics: [
+                            { name: 'Design Thinking', week: 'Week 8' },
+                            { name: 'Tech Innovation Project', week: 'Week 10' }
+                        ]
+                    }
+                ]
+            },
+            'Teaching': {
+                subjects: [
+                    {
+                        name: 'English Language',
+                        icon: '📚',
+                        topics: [
+                            { name: 'Communication Skills', week: 'Week 1' },
+                            { name: 'Reading Comprehension', week: 'Week 3' },
+                            { name: 'Creative Writing', week: 'Week 5' },
+                            { name: 'Presentation Skills', week: 'Week 7' }
+                        ]
+                    },
+                    {
+                        name: 'Social Studies',
+                        icon: '🌍',
+                        topics: [
+                            { name: 'Child Development', week: 'Week 2' },
+                            { name: 'Education Systems', week: 'Week 4' },
+                            { name: 'Community and Leadership', week: 'Week 6' }
+                        ]
+                    },
+                    {
+                        name: 'Creative Arts',
+                        icon: '🎨',
+                        topics: [
+                            { name: 'Teaching Through Arts', week: 'Week 8' },
+                            { name: 'Classroom Activities Design', week: 'Week 9' }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Search functionality
+        function searchCareer() {
+            const input = document.getElementById('careerInput').value.trim();
+            if (input) {
+                displayResults(input);
+            }
+        }
+
+        function selectCareer(career) {
+            document.getElementById('careerInput').value = career;
+            displayResults(career);
+        }
+
+        function displayResults(searchTerm) {
+            const resultsSection = document.getElementById('resultsSection');
+            const careerDisplay = document.getElementById('careerDisplay');
+            const subjectsGrid = document.getElementById('subjectsGrid');
+
+            // Find matching career
+            let matchedCareer = null;
+            let careerKey = null;
+
+            for (const [key, value] of Object.entries(curriculumData)) {
+                if (key.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                    searchTerm.toLowerCase().includes(key.toLowerCase())) {
+                    matchedCareer = value;
+                    careerKey = key;
+                    break;
+                }
+            }
+
+            // Show results
+            if (matchedCareer) {
+                careerDisplay.textContent = careerKey;
+                subjectsGrid.innerHTML = '';
+
+                matchedCareer.subjects.forEach(subject => {
+                    const card = document.createElement('div');
+                    card.className = 'subject-card';
+                    
+                    const topicsHTML = subject.topics.map(topic => 
+                        `<li class="topic-item">
+                            ${topic.name}
+                            <span class="week-badge">${topic.week}</span>
+                        </li>`
+                    ).join('');
+
+                    card.innerHTML = `
+                        <div class="subject-header">
+                            <div class="subject-icon">${subject.icon}</div>
+                            <h4 class="subject-title">${subject.name}</h4>
+                        </div>
+                        <ul class="topics-list">
+                            ${topicsHTML}
+                        </ul>
+                    `;
+
+                    subjectsGrid.appendChild(card);
+                });
+
+                resultsSection.classList.add('active');
+                resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                subjectsGrid.innerHTML = `
+                    <div class="no-results">
+                        <h3>Career Not Found</h3>
+                        <p>We're still building content for "${searchTerm}". Try searching for Engineering, Business, Healthcare, Technology, or Teaching.</p>
+                    </div>
+                `;
+                resultsSection.classList.add('active');
+                resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Allow Enter key to trigger search
+        document.getElementById('careerInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchCareer();
+            }
+        });
+    </script>
+</body>
+</html>
